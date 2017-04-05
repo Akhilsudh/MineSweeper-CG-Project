@@ -42,7 +42,32 @@ void Drawer::drawFlag(int x, int y)
 }
 
 void Drawer::drawClosedField(int x, int y)
-{}
+{
+	//Create a Closed Grey Box 
+	glColor3f(0.8f, 0.8f, 0.8f);
+    glBegin(GL_QUADS);
+    glVertex2f(x * CELL_WIDTH, y * CELL_HEIGHT);
+    glVertex2f((x + 1) * CELL_WIDTH, y * CELL_HEIGHT);
+    glVertex2f((x + 1) * CELL_WIDTH, (y + 1) * CELL_HEIGHT);
+    glVertex2f(x * CELL_WIDTH, (y + 1) * CELL_HEIGHT);
+    glEnd();
+    //Lines for tile effect
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glBegin(GL_LINES);
+    glVertex2f(x * CELL_WIDTH, y * CELL_HEIGHT);
+    glVertex2f((x + 1) * CELL_WIDTH - 1, y * CELL_HEIGHT);
+    glVertex2f(x * CELL_WIDTH, y * CELL_HEIGHT);
+    glVertex2f(x * CELL_WIDTH, (y + 1) * CELL_HEIGHT - 1);
+    glEnd();
+    //Dark grey Lines for depth
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glBegin(GL_LINES);
+    glVertex2f((x + 1) * CELL_WIDTH - 1, y * CELL_HEIGHT);
+    glVertex2f((x + 1) * CELL_WIDTH - 1, (y + 1) * CELL_HEIGHT - 1);
+    glVertex2f(x * CELL_WIDTH, (y + 1) * CELL_HEIGHT - 1);
+    glVertex2f((x + 1) * CELL_WIDTH - 1, (y + 1) * CELL_HEIGHT - 1);
+    glEnd();
+}
 
 void Drawer::drawOpenedField(int x, int y, int minesAround)
 {}

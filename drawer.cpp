@@ -108,7 +108,7 @@ void Drawer::drawOpenedField(int x, int y, int neighbourMinesCount)
 
 void Drawer::drawOpenedField(int x, int y)
 {
-	//This overloaded function just draws a plain Opened Block with no Neighbouring Mines
+	//This overloaded function just draws a plain Opened Block with no Neighbouring Mines count
 	
 	//Light Grey Box
 	glColor3f(0.6f, 0.6f, 0.6f);

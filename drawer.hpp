@@ -7,7 +7,7 @@ class Drawer
 	    void drawMine(int x, int y);
 	    void drawFlag(int x, int y);
 	    void drawClosedField(int x, int y);
-	    void drawOpenedField(int x, int y, int minesAround);
+	    void drawOpenedField(int x, int y, int neighbourMinesCount);
 	private:
     	void drawOpenedField(int x, int y);
 }

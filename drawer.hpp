@@ -10,4 +10,4 @@ class Drawer
 	    void drawOpenedField(int x, int y, int neighbourMinesCount);
 	private:
     	void drawOpenedField(int x, int y); //For Blank Fields
-}
+};

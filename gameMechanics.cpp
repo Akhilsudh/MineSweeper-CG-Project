@@ -50,18 +50,18 @@ void Game::draw()
 	                            if (field_[xx][yy].hasMine)
 	                                ++neighbourMinesCount;
 	                        }
-	                    p.drawOpenedField(x, y, neighbourMinesCount); //Draw the opened field
+	                    d.drawOpenedField(x, y, neighbourMinesCount); //Draw the opened field
 	                }
 	                else
 	                {    
-	                	p.drawMine(x, y);
+	                	d.drawMine(x, y);
 	                	///////////////////////////////////////////////////////////////////
 	                	//Write a procedure here to show the player that the game is over//
 	                	///////////////////////////////////////////////////////////////////
 	                }
 	                break;
 	            case FLAG:
-	                p.drawFlag(x, y);
+	                d.drawFlag(x, y);
 	                break;
             }
         }

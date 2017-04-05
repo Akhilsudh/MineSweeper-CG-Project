@@ -1,4 +1,4 @@
-#pragma once
+#pragma once //Include this file only once while compiling
 
 class Drawer
 {
@@ -9,5 +9,5 @@ class Drawer
 	    void drawClosedField(int x, int y);
 	    void drawOpenedField(int x, int y, int neighbourMinesCount);
 	private:
-    	void drawOpenedField(int x, int y);
+    	void drawOpenedField(int x, int y); //For Blank Fields
 }

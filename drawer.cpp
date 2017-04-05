@@ -77,13 +77,13 @@ void Drawer::drawOpenedField(int x, int y, int neighbourMinesCount)
         switch (neighbourMinesCount)
         {
 	        case 1:
-	            glColor3f(0.0f, 1.0f, 0.0f); //Green Number 1
+	            glColor3f(0.0f, 1.0f, 0.0f); //Green
 	            break;
 	        case 2:
-	            glColor3f(0.0f, 0.0f, 1.0f); //Blue Number 2
+	            glColor3f(0.0f, 0.0f, 1.0f); //Blue
 	            break;
 	        case 3:
-	            glColor3f(1.0f, 0.0f, 0.0f); //Red Number 3
+	            glColor3f(1.0f, 0.0f, 0.0f); //Red 
 	            break;
 	        case 4:
 	            glColor3f(0.0f, 0.7f, 0.0f); //Celebi Green

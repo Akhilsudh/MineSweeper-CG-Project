@@ -11,7 +11,22 @@ void display()
     glutSwapBuffers();
 }
 
-void mouse() // Mouse functions here..
+void mouse(int button, int state, int x, int y) // Mouse functions here..
+{
+    if (state == GLUT_UP)
+    {
+        switch (button)
+        {
+            case GLUT_LEFT_BUTTON:  //Open that tile
+                game.open(x / Drawer::CELL_WIDTH, y / Drawer::CELL_HEIGHT);
+                break;
+            case GLUT_RIGHT_BUTTON: //Place a Flag here
+                game.markFlag(x / Drawer::CELL_WIDTH, y / Drawer::CELL_HEIGHT);
+                break;
+        }
+        glutPostRedisplay();
+    }   
+}
 
 int main(int argc, char **argv)
 {

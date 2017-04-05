@@ -3,7 +3,28 @@
 #include <cstdlib>
 
 Game::Game()
-{}
+{
+	for (int y = 0; y < HEIGHT; ++y)
+        for (int x = 0; x < WIDTH; ++x)
+        {
+            field_[x][y].state = CLOSED;
+            field_[x][y].hasMine = false;
+        }
+    for (int i = 0; i < 10; ++i)
+    {
+        int x, y;
+        //Randomly select a position x and y till a field with no mines has returned to place a mine there
+        do
+        {	
+        	//Find x and y randomly wrt the HEIGHT and WIDTH defined
+            x = rand() % WIDTH;
+            y = rand() % HEIGHT;
+        }
+        while (field_[x][y].hasMine);
+        
+        field_[x][y].hasMine = true;
+    }
+}
 
 void Game::draw()
 {
@@ -47,7 +68,21 @@ void Game::draw()
 }
 
 void Game::markFlag(int x, int y)
-{}
+{
+	switch (field_[x][y].state)
+    {
+	    case OPENED:
+	        break;
+	    case CLOSED:
+	        field_[x][y].state = FLAG;
+	        break;
+	    case FLAG:
+	        field_[x][y].state = CLOSED;
+	        break;
+    }
+}
 
 void Game::open(int x, int y)
-{}
+{
+	field_[x][y].state = OPENED;
+}

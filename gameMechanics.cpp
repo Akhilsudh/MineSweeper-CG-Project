@@ -6,7 +6,8 @@
 #include <unistd.h>
 
 Game::Game()
-{	srand ( time(NULL) );
+{	gameOver = false;
+	srand ( time(NULL) );
 	for (int y = 0; y < HEIGHT; ++y)
         for (int x = 0; x < WIDTH; ++x)
         {
@@ -33,49 +34,56 @@ Game::Game()
 void Game::draw()
 {
 	Drawer d;
-	for (int y = 0; y < HEIGHT; ++y)
-        for (int x = 0; x < WIDTH; ++x)
-        {
-            switch (field_[x][y].state)
-            {
-	            case CLOSED:
-	                d.drawClosedField(x, y); //Draw a closed field
-	                break;
-	            case OPENED:
-	                if (!field_[x][y].hasMine)
-	                {
-	                    int neighbourMinesCount = 0;
-	                    //Check all around this field for mines and increase the neighbouring mines count
-	                    for (int yy = y - 1; yy <= y + 1; ++yy)
-	                        for (int xx = x - 1; xx <= x + 1; ++xx)
-	                        {
-	                            if ((xx == x && yy == y) || xx < 0 || xx >= WIDTH || yy < 0 || yy >= HEIGHT)
-	                                continue;
-	                            if (field_[xx][yy].hasMine)
-	                                ++neighbourMinesCount;
-	                        }
-	                    d.drawOpenedField(x, y, neighbourMinesCount); //Draw the opened field
-	                }
-	                else
-	                {   
-	                	///////////////////////////////////////////////////////////////////
-	                	//Write a procedure here to show the player that the game is over//
-	                	/////////////////////////////////////////////////////////////////// 
-	                	for (int j = 0; j < HEIGHT; ++j)
-        					for (int i = 0; i < WIDTH; ++i)
-        						if (field_[i][j].hasMine){
-        							field_[i][j].state = OPENED;
-        							d.drawMine(i, j);	                	
-        						}
-        				
-        		
-	                }
-	                break;
-	            case FLAG:
-	                d.drawFlag(x, y);
-	                break;
-            }
-        }
+	if(!gameOver)
+		{for (int y = 0; y < HEIGHT; ++y)
+	        for (int x = 0; x < WIDTH; ++x)
+	        {
+	            switch (field_[x][y].state)
+	            {
+		            case CLOSED:
+		                d.drawClosedField(x, y); //Draw a closed field
+		                break;
+		            case OPENED:
+		                if (!field_[x][y].hasMine)
+		                {
+		                    int neighbourMinesCount = 0;
+		                    //Check all around this field for mines and increase the neighbouring mines count
+		                    for (int yy = y - 1; yy <= y + 1; ++yy)
+		                        for (int xx = x - 1; xx <= x + 1; ++xx)
+		                        {
+		                            if ((xx == x && yy == y) || xx < 0 || xx >= WIDTH || yy < 0 || yy >= HEIGHT)
+		                                continue;
+		                            if (field_[xx][yy].hasMine)
+		                                ++neighbourMinesCount;
+		                        }
+		                    d.drawOpenedField(x, y, neighbourMinesCount); //Draw the opened field
+		                }
+		                else
+		                {   
+		                	///////////////////////////////////////////////////////////////////
+		                	//Write a procedure here to show the player that the game is over//
+		                	/////////////////////////////////////////////////////////////////// 
+		                	for (int j = 0; j < HEIGHT; ++j)
+	        					for (int i = 0; i < WIDTH; ++i)
+	        						if (field_[i][j].hasMine){
+	        							field_[i][j].state = OPENED;
+	        							d.drawMine(i, j);	                	
+	        						}
+	        				gameOver = true;
+	        				
+		                }
+		                break;
+		            case FLAG:
+		                d.drawFlag(x, y);
+		                break;
+	            }
+	        }
+	}
+	else{
+		for (int j = 0; j < HEIGHT; ++j)
+			for (int i = 0; i < WIDTH; ++i)
+				d.drawClosedField(i, j);
+	}
 }
 
 void Game::markFlag(int x, int y)

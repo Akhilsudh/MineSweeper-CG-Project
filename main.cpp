@@ -11,6 +11,11 @@ void display()
     glutSwapBuffers();
 }
 
+void reshape(int w, int h)
+{   
+    glutReshapeWindow(Game::WIDTH * Drawer::CELL_WIDTH, Game::HEIGHT * Drawer::CELL_HEIGHT);
+}
+
 void mouse(int button, int state, int x, int y) // Mouse functions here..
 {
     if (state == GLUT_UP)
@@ -40,6 +45,7 @@ int main(int argc, char **argv)
     glLoadIdentity();
     glOrtho(0, Game::WIDTH * Drawer::CELL_WIDTH, Game::HEIGHT * Drawer::CELL_HEIGHT, 0, -1.0, 1.0);
     glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
     glutMouseFunc(mouse); //Call the mouse function here
     glutMainLoop();
 }

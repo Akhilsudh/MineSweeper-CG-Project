@@ -6,7 +6,8 @@ class Game
 	    
 	    enum { WIDTH = 15, HEIGHT = 15 };
 	    enum State { CLOSED, OPENED, FLAG }; // 3 possible states of any given field
-	    
+	    bool gameOver;
+
 	    Game();
 	    void draw();
 	    void markFlag(int x, int y);

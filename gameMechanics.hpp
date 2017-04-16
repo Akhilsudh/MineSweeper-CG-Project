@@ -4,7 +4,7 @@ class Game
 {
 	public:
 	    
-	    enum { WIDTH = 12, HEIGHT = 12 };
+	    enum { WIDTH = 15, HEIGHT = 15 };
 	    enum State { CLOSED, OPENED, FLAG }; // 3 possible states of any given field
 	    
 	    Game();

@@ -29,7 +29,7 @@ void mouse(int button, int state, int x, int y) // Mouse functions here..
 }
 
 int main(int argc, char **argv)
-{
+{   
 	glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(Game::WIDTH * Drawer::CELL_WIDTH, Game::HEIGHT * Drawer::CELL_HEIGHT);

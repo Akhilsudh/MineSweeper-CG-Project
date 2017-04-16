@@ -1,9 +1,11 @@
 #include "gameMechanics.hpp"
 #include "drawer.hpp"
 #include <cstdlib>
+#include <stdio.h>
+#include <ctime>
 
 Game::Game()
-{
+{	srand ( time(NULL) );
 	for (int y = 0; y < HEIGHT; ++y)
         for (int x = 0; x < WIDTH; ++x)
         {
@@ -23,6 +25,7 @@ Game::Game()
         while (field_[x][y].hasMine);
         
         field_[x][y].hasMine = true;
+        printf("%d %d\n", x, y);
     }
 }
 
@@ -53,11 +56,13 @@ void Game::draw()
 	                    d.drawOpenedField(x, y, neighbourMinesCount); //Draw the opened field
 	                }
 	                else
-	                {    
-	                	d.drawMine(x, y);
+	                {   
 	                	///////////////////////////////////////////////////////////////////
 	                	//Write a procedure here to show the player that the game is over//
-	                	///////////////////////////////////////////////////////////////////
+	                	/////////////////////////////////////////////////////////////////// 
+	                	d.drawMine(x, y);	                	
+	                	
+
 	                }
 	                break;
 	            case FLAG:

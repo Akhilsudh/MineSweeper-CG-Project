@@ -3,6 +3,7 @@
 #include <GL/glut.h>
 #include <cmath>
 #include <iostream>
+#include <unistd.h>
 
 void Drawer::drawMine(int x, int y) //Draw a Black Pentagon for a mine
 {
@@ -15,6 +16,7 @@ void Drawer::drawMine(int x, int y) //Draw a Black Pentagon for a mine
     }
     glEnd();
 }
+
 
 void Drawer::drawFlag(int x, int y)
 {

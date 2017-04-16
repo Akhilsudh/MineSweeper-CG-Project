@@ -3,7 +3,7 @@
 class Drawer
 {
 	public:
-	    enum { CELL_WIDTH = 16, CELL_HEIGHT = 16 };
+	    enum { CELL_WIDTH = 25, CELL_HEIGHT = 25 };
 	    void drawMine(int x, int y);
 	    void drawFlag(int x, int y);
 	    void drawClosedField(int x, int y);

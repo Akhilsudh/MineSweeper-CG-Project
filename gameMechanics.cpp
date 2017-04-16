@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <stdio.h>
 #include <ctime>
+#include <unistd.h>
 
 Game::Game()
 {	srand ( time(NULL) );
@@ -60,9 +61,14 @@ void Game::draw()
 	                	///////////////////////////////////////////////////////////////////
 	                	//Write a procedure here to show the player that the game is over//
 	                	/////////////////////////////////////////////////////////////////// 
-	                	d.drawMine(x, y);	                	
-	                	
-
+	                	for (int j = 0; j < HEIGHT; ++j)
+        					for (int i = 0; i < WIDTH; ++i)
+        						if (field_[i][j].hasMine){
+        							field_[i][j].state = OPENED;
+        							d.drawMine(i, j);	                	
+        						}
+        				sleep(1);
+        				exit(1);
 	                }
 	                break;
 	            case FLAG:

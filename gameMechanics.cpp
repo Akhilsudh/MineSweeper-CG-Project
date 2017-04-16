@@ -67,8 +67,8 @@ void Game::draw()
         							field_[i][j].state = OPENED;
         							d.drawMine(i, j);	                	
         						}
-        				sleep(1);
-        				exit(1);
+        				
+        		
 	                }
 	                break;
 	            case FLAG:

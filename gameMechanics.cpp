@@ -58,7 +58,7 @@ void Game::draw()
 		                }
 		                else
 		                {   //Mines go KABOOM :P
-		                	
+
 		                	for (int j = 0; j < HEIGHT; ++j)
 	        					for (int i = 0; i < WIDTH; ++i)
 	        						if (field_[i][j].hasMine){
@@ -78,8 +78,15 @@ void Game::draw()
 	else{
 		for (int j = 0; j < HEIGHT; ++j)
 			for (int i = 0; i < WIDTH; ++i)
-				d.drawClosedField(i, j);
-		
+				if (field_[i][j].hasMine)
+				{
+			    	field_[i][j].state = OPENED;
+			    	d.drawMine(i, j);	                	
+			    }
+			    else
+			    {
+			    	d.drawClosedField(i, j);
+			    }
 		sleep(1);
 		d.render((int)HEIGHT, (int)WIDTH);
 	}

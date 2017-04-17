@@ -57,10 +57,8 @@ void Game::draw()
 		                    d.drawOpenedField(x, y, neighbourMinesCount); //Draw the opened field
 		                }
 		                else
-		                {   
-		                	///////////////////////////////////////////////////////////////////
-		                	//Write a procedure here to show the player that the game is over//
-		                	/////////////////////////////////////////////////////////////////// 
+		                {   //Mines go KABOOM :P
+		                	
 		                	for (int j = 0; j < HEIGHT; ++j)
 	        					for (int i = 0; i < WIDTH; ++i)
 	        						if (field_[i][j].hasMine){
@@ -81,6 +79,7 @@ void Game::draw()
 		for (int j = 0; j < HEIGHT; ++j)
 			for (int i = 0; i < WIDTH; ++i)
 				d.drawClosedField(i, j);
+		
 		sleep(1);
 		d.render((int)HEIGHT, (int)WIDTH);
 	}

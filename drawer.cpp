@@ -134,21 +134,20 @@ void Drawer::drawStrokeText(char*string,int x,int y,int z)
 {
       char *c;
       glPushMatrix();
-      glTranslatef(x+90, y+200,z);
-      glScalef(1.0f,-1.0f,z);
+      glTranslatef(x+3, y+65,z);
+      glScalef(0.35f,-0.35f,z);
       
   
       for (c=string; *c != '\0'; c++)
       {
             glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
-            glutStrokeWidth(GLUT_STROKE_ROMAN, 5);
+            glutStrokeWidth(GLUT_STROKE_ROMAN, 0.5);
       }
       glPopMatrix();
 }
 
 void Drawer::render(int h, int w)
 { 
-    ///////////////////////////////
     //Create a Closed Grey Box 
     glColor3f(0.8f, 0.8f, 0.8f);
     glBegin(GL_QUADS);
@@ -160,7 +159,7 @@ void Drawer::render(int h, int w)
     //Lines for tile effect
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_LINES);
-    glVertex2f((w/3)*CELL_WIDTH, h/3);
+    glVertex2f((w/3)*CELL_WIDTH, (h/3)*CELL_HEIGHT);
     glVertex2f((2*w/3)*CELL_WIDTH - 1, (h/3)*CELL_HEIGHT);
     glVertex2f((w/3)*CELL_WIDTH, (h/3)*CELL_HEIGHT);
     glVertex2f((w/3)*CELL_WIDTH, (2*h/3)*CELL_HEIGHT - 1);
@@ -173,10 +172,10 @@ void Drawer::render(int h, int w)
     glVertex2f((w/3)*CELL_WIDTH, (2*h/3)*CELL_HEIGHT - 1);
     glVertex2f((2*w/3)*CELL_WIDTH - 1, (2*h/3)*CELL_HEIGHT - 1);
     glEnd();
-    ///////////////////////////////
+    //Draw Game Over text on the box generated above
     glColor3f(0,0,0);
     glLineWidth(5.0);
-    drawStrokeText("Game Over",w,h,0);
+    drawStrokeText("GAME OVER",(w/3)*CELL_WIDTH+5,(h/3)*CELL_HEIGHT,0);
     glLineWidth(1.0);
     glutSwapBuffers(); 
 }

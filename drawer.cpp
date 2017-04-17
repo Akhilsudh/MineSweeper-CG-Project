@@ -148,6 +148,32 @@ void Drawer::drawStrokeText(char*string,int x,int y,int z)
 
 void Drawer::render(int h, int w)
 { 
+    ///////////////////////////////
+    //Create a Closed Grey Box 
+    glColor3f(0.8f, 0.8f, 0.8f);
+    glBegin(GL_QUADS);
+    glVertex2f((w/3)*CELL_WIDTH, (h/3)*CELL_HEIGHT);
+    glVertex2f((2*w/3)*CELL_WIDTH, (h/3)*CELL_HEIGHT);
+    glVertex2f((2*w/3)*CELL_WIDTH, (2*h/3)*CELL_HEIGHT);
+    glVertex2f((w/3)*CELL_WIDTH, (2*h/3)*CELL_HEIGHT);
+    glEnd();
+    //Lines for tile effect
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glBegin(GL_LINES);
+    glVertex2f((w/3)*CELL_WIDTH, h/3);
+    glVertex2f((2*w/3)*CELL_WIDTH - 1, (h/3)*CELL_HEIGHT);
+    glVertex2f((w/3)*CELL_WIDTH, (h/3)*CELL_HEIGHT);
+    glVertex2f((w/3)*CELL_WIDTH, (2*h/3)*CELL_HEIGHT - 1);
+    glEnd();
+    //Dark grey Lines for depth
+    glColor3f(0.2f, 0.2f, 0.2f);
+    glBegin(GL_LINES);
+    glVertex2f((2*w/3)*CELL_WIDTH - 1, (h/3)*CELL_HEIGHT);
+    glVertex2f((2*w/3)*CELL_WIDTH - 1, (2*h/3)*CELL_HEIGHT - 1);
+    glVertex2f((w/3)*CELL_WIDTH, (2*h/3)*CELL_HEIGHT - 1);
+    glVertex2f((2*w/3)*CELL_WIDTH - 1, (2*h/3)*CELL_HEIGHT - 1);
+    glEnd();
+    ///////////////////////////////
     glColor3f(0,0,0);
     glLineWidth(5.0);
     drawStrokeText("Game Over",w,h,0);

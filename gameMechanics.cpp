@@ -1,7 +1,6 @@
 #include "gameMechanics.hpp"
 #include "drawer.hpp"
 #include <cstdlib>
-#include <stdio.h>
 #include <ctime>
 #include <unistd.h>
 
@@ -14,7 +13,7 @@ Game::Game()
             field_[x][y].state = CLOSED;
             field_[x][y].hasMine = false;
         }
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < 20; ++i)
     {
         int x, y;
         //Randomly select a position x and y till a field with no mines has returned to place a mine there
@@ -27,7 +26,6 @@ Game::Game()
         while (field_[x][y].hasMine);
         
         field_[x][y].hasMine = true;
-        printf("%d %d\n", x, y);
     }
 }
 
@@ -83,6 +81,7 @@ void Game::draw()
 		for (int j = 0; j < HEIGHT; ++j)
 			for (int i = 0; i < WIDTH; ++i)
 				d.drawClosedField(i, j);
+		d.render((int)HEIGHT, (int)WIDTH);
 	}
 }
 

@@ -129,3 +129,28 @@ void Drawer::drawOpenedField(int x, int y)
     glVertex2f((x + 1) * CELL_WIDTH - 1, (y + 1) * CELL_HEIGHT - 1);
     glEnd();
 }
+
+void Drawer::drawStrokeText(char*string,int x,int y,int z)
+{
+      char *c;
+      glPushMatrix();
+      glTranslatef(x+90, y+200,z);
+      glScalef(1.0f,-1.0f,z);
+      
+  
+      for (c=string; *c != '\0'; c++)
+      {
+            glutStrokeCharacter(GLUT_STROKE_ROMAN , *c);
+            glutStrokeWidth(GLUT_STROKE_ROMAN, 5);
+      }
+      glPopMatrix();
+}
+
+void Drawer::render(int h, int w)
+{ 
+    glColor3f(0,0,0);
+    glLineWidth(5.0);
+    drawStrokeText("Game Over",w,h,0);
+    glLineWidth(1.0);
+    glutSwapBuffers(); 
+}

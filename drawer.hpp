@@ -11,5 +11,5 @@ class Drawer
 	    void render(int h, int y);
 	private:
     	void drawOpenedField(int x, int y); //For Blank Fields
-	    void drawStrokeText(char*string, int x, int y, int z);
+	    void drawStrokeText(char*string, int x, int y, int z, int size, float scaleFactor);
 };

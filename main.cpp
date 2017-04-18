@@ -11,6 +11,17 @@ void display()
     glutSwapBuffers();
 }
 
+void keyPressed (unsigned char key, int x, int y) {  
+    if (key == 'q') { 
+        // If they ‘q’ key was pressed exit game
+        exit(0);
+    }  
+    else if(key == 'r'){
+        // If they ‘r’ key was pressed restart game
+        game = Game();
+    }
+} 
+
 void reshape(int w, int h)
 {   
     glutReshapeWindow(Game::WIDTH * Drawer::CELL_WIDTH, Game::HEIGHT * Drawer::CELL_HEIGHT);
@@ -46,6 +57,7 @@ int main(int argc, char **argv)
     glOrtho(0, Game::WIDTH * Drawer::CELL_WIDTH, Game::HEIGHT * Drawer::CELL_HEIGHT, 0, -1.0, 1.0);
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
+    glutKeyboardFunc(keyPressed);
     glutMouseFunc(mouse); //Call the mouse function here
     glutMainLoop();
 }

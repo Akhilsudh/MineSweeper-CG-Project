@@ -18,6 +18,7 @@ void keyPressed (unsigned char key, int x, int y) {
     }  
     else if(key == 'r'){
         // If they ‘r’ key was pressed restart game
+        // reinitialise object
         game = Game();
     }
 } 

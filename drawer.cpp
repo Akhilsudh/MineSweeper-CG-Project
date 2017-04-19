@@ -130,9 +130,9 @@ void Drawer::drawOpenedField(int x, int y)
     glEnd();
 }
 
-void Drawer::drawStrokeText(char*string, int x, int y, int z, int size, float scaleFactor)
+void Drawer::drawStrokeText(const char*string, int x, int y, int z, int size, float scaleFactor)
 {
-      char *c;
+      const char *c;
       glPushMatrix();
       glTranslatef(x+3, y+65,z);
       glScalef(scaleFactor,-scaleFactor,z);

@@ -8,7 +8,9 @@ class Drawer
 	    void drawFlag(int x, int y);
 	    void drawClosedField(int x, int y);
 	    void drawOpenedField(int x, int y, int neighbourMinesCount);
-	    void render(int h, int y);
+	    void renderBox(int h, int y, int scale);
+	    void gameOver(int h, int y);
+	    void drawWelcomeScreen(int h, int w);
 	private:
     	void drawOpenedField(int x, int y); //For Blank Fields
 	    void drawStrokeText(const char*string, int x, int y, int z, int size, float scaleFactor);

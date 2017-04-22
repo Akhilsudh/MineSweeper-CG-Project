@@ -1,11 +1,12 @@
 #include "drawer.hpp"
 #include "gameMechanics.hpp"
 #include <GL/glut.h>
+#include <unistd.h>
 
 Game game;
 
 void display()
-{
+{   
 	glClear(GL_COLOR_BUFFER_BIT);
     game.draw();
     glutSwapBuffers();

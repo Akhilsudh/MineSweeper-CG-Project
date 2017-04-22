@@ -10,6 +10,7 @@ class Game
 
 	    Game();
 	    void draw();
+	    void welcomeScreen();
 	    void markFlag(int x, int y);
 	    void open(int x, int y);
 	

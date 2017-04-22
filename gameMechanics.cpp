@@ -4,6 +4,8 @@
 #include <ctime>
 #include <unistd.h>
 
+int initial = 0;
+
 Game::Game()
 {	gameOver = false;
 	srand ( time(NULL) );
@@ -33,7 +35,7 @@ void Game::draw()
 {
 	Drawer d;
 	if(!gameOver)
-		{for (int y = 0; y < HEIGHT; ++y)
+	{	for (int y = 0; y < HEIGHT; ++y)
 	        for (int x = 0; x < WIDTH; ++x)
 	        {
 	            switch (field_[x][y].state)
@@ -74,6 +76,13 @@ void Game::draw()
 		                break;
 	            }
 	        }
+        if (!initial)
+	    {
+	        initial = 1;
+	        Drawer d;
+			d.drawWelcomeScreen((int)HEIGHT, (int)WIDTH);
+	        sleep(2);
+	    }
 	}
 	else{
 		for (int j = 0; j < HEIGHT; ++j)
@@ -88,7 +97,7 @@ void Game::draw()
 			    	d.drawClosedField(i, j);
 			    }
 		sleep(1);
-		d.render((int)HEIGHT, (int)WIDTH);
+		d.gameOver((int)HEIGHT, (int)WIDTH);
 	}
 }
 

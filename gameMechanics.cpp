@@ -7,6 +7,11 @@
 
 int initial = 0;
 
+void boom()
+{
+    system("play boom.wav 2> /dev/null");
+}
+
 Game::Game()
 {	gameOver = false;
 	srand ( time(NULL) );
@@ -63,7 +68,8 @@ void Game::draw()
 		                {   //Mines go KABOOM :P
 		                	//Literally
 		                	if(!boomFlag){
-		                		system("play boom.wav 2> /dev/null");
+		                		std::thread t1(boom);
+		                		t1.join();
 		                		boomFlag = 1;
 		                	}
 

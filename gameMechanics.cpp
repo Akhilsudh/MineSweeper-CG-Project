@@ -2,6 +2,7 @@
 #include "drawer.hpp"
 #include <cstdlib>
 #include <ctime>
+#include <thread>
 #include <unistd.h>
 
 int initial = 0;
@@ -32,7 +33,7 @@ Game::Game()
 }
 
 void Game::draw()
-{
+{	int boomFlag = 0;
 	Drawer d;
 	if(!gameOver)
 	{	for (int y = 0; y < HEIGHT; ++y)
@@ -60,6 +61,11 @@ void Game::draw()
 		                }
 		                else
 		                {   //Mines go KABOOM :P
+		                	//Literally
+		                	if(!boomFlag){
+		                		system("play boom.wav 2> /dev/null");
+		                		boomFlag = 1;
+		                	}
 
 		                	for (int j = 0; j < HEIGHT; ++j)
 	        					for (int i = 0; i < WIDTH; ++i)

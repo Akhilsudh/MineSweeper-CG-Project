@@ -195,11 +195,11 @@ void Drawer::gameOver(int h, int w)
     //Draw Game Over text on the box generated above
     glColor3f(0,0,0);
     glLineWidth(5.0);
-    drawStrokeText("GAME OVER", (w/3)*CELL_WIDTH+5, (h/3)*CELL_HEIGHT, 0, 0.5, 0.35f);
+    drawStrokeText("GAME OVER", (w/3)*CELL_WIDTH+5, (h/3)*CELL_HEIGHT + 60, 0, 0.5, 0.35f);
     glLineWidth(1.0);
     glLineWidth(3.0);
-    drawStrokeText("Press R to restart", (w/3)*CELL_WIDTH + 5, (h/3)*CELL_HEIGHT + 50, 0, 0.2, 0.15f);
-    drawStrokeText("Press Q to quit", (w/3)*CELL_WIDTH + 5, (h/3)*CELL_HEIGHT + 80, 0, 0.2, 0.15f);
+    drawStrokeText("Press R to restart", (w/3)*CELL_WIDTH + 5, (h/3)*CELL_HEIGHT + 100, 0, 0.2, 0.15f);
+    drawStrokeText("Press Q to quit", (w/3)*CELL_WIDTH + 5, (h/3)*CELL_HEIGHT + 150, 0, 0.2, 0.15f);
     glLineWidth(1.0);
     glutSwapBuffers(); 
 }

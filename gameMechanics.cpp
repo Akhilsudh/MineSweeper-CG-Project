@@ -27,7 +27,7 @@ Game::Game()
             field_[x][y].state = CLOSED;
             field_[x][y].hasMine = false;
         }
-    for (int i = 0; i < 20; ++i)
+    for (int i = 0; i < 30; ++i)
     {
         int x, y;
         //Randomly select a position x and y till a field with no mines has returned to place a mine there

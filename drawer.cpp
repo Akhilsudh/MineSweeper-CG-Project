@@ -5,6 +5,8 @@
 #include <iostream>
 #include <unistd.h>
 
+int boomOrNumberFlag = 1;
+
 void Drawer::drawWelcomeScreen(int h, int w) //Draws Welcome Screen
 {   renderBox(h, w, 3);
     glColor3f(0,0,0);

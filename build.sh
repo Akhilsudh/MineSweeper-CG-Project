@@ -1,5 +1,5 @@
-
 rm -rf extraFiles;
+rm minesweeperExecutable;
 mkdir extraFiles;
 g++ -Wall -g -std=c++0x -c "main.cpp" -o "extraFiles/main.o";
 g++ -Wall -g -std=c++0x -c "gameMechanics.cpp" -o "extraFiles/gameMechanics.o";

@@ -2,10 +2,16 @@
 #include "drawer.hpp"
 #include <cstdlib>
 #include <ctime>
+#include <stdio.h>
 #include <thread>
 #include <unistd.h>
 
+
 int initial = 0;
+Drawer d;
+int retFlag = 0, anotherFlag = 0;
+int X, Y;
+
 
 void boom()
 {
@@ -37,9 +43,32 @@ Game::Game()
     }
 }
 
+bool Game::gridSweeper(int x, int y)
+{
+	if (!field_[x][y].hasMine)
+	{	
+		int neighbourMinesCount = 0;
+	    //Check all around this field for mines and increase the neighbouring mines count
+	    for (int yy = y - 1; yy <= y + 1; ++yy){
+	    	for (int xx = x - 1; xx <= x + 1; ++xx)
+	        {
+	            if ((xx == x && yy == y) || xx < 0 || xx >= WIDTH || yy < 0 || yy >= HEIGHT)
+	                continue;
+	            if (field_[xx][yy].hasMine)
+	                ++neighbourMinesCount;
+	        }
+	    }
+	    field_[x][y].state = OPENED;
+	    d.drawOpenedField(x, y, neighbourMinesCount);   
+	    return true;
+    }
+    else return false;
+}
+
+
 void Game::draw()
 {	int boomFlag = 0;
-	Drawer d;
+
 	if(!gameOver)
 	{	for (int y = 0; y < HEIGHT; ++y)
 	        for (int x = 0; x < WIDTH; ++x)
@@ -54,15 +83,35 @@ void Game::draw()
 		                {
 		                    int neighbourMinesCount = 0;
 		                    //Check all around this field for mines and increase the neighbouring mines count
-		                    for (int yy = y - 1; yy <= y + 1; ++yy)
-		                        for (int xx = x - 1; xx <= x + 1; ++xx)
-		                        {
-		                            if ((xx == x && yy == y) || xx < 0 || xx >= WIDTH || yy < 0 || yy >= HEIGHT)
-		                                continue;
-		                            if (field_[xx][yy].hasMine)
-		                                ++neighbourMinesCount;
-		                        }
-		                    d.drawOpenedField(x, y, neighbourMinesCount); //Draw the opened field
+		                    for (int yy = y - 1; yy <= y + 1; ++yy){
+						    	for (int xx = x - 1; xx <= x + 1; ++xx)
+						        {
+						            if ((xx == x && yy == y) || xx < 0 || xx >= WIDTH || yy < 0 || yy >= HEIGHT)
+						                continue;
+						            if (field_[xx][yy].hasMine)
+						                ++neighbourMinesCount;
+						        }
+						    }
+						    d.drawOpenedField(x, y, neighbourMinesCount);   
+
+		                	if(anotherFlag)
+							{	
+								int depth = rand()%5;
+
+								for(int k = 1; k <= depth;k++){
+		                			if(X > 0 && !gridSweeper(X-k, Y)) break;
+		                			if(Y > 0 && !gridSweeper(X, Y-k)) break;
+		                			if(X < WIDTH && !gridSweeper(X+k, Y)) break;
+		                			if(Y < HEIGHT && !gridSweeper(X, Y+k)) break;
+		                			if(X > 0 && Y > 0 && !gridSweeper(X-k, Y-k)) break;
+		                			if(X < WIDTH && Y < HEIGHT &&!gridSweeper(X+k, Y+k)) break;
+		                		}
+		                		
+								anotherFlag = 0;
+							}
+			                   	
+		                    //d.drawOpenedField(x, y, neighbourMinesCount); //Draw the opened field
+							
 		                }
 		                else
 		                {   //Mines go KABOOM :P
@@ -129,6 +178,9 @@ void Game::markFlag(int x, int y)
 }
 
 void Game::open(int x, int y)
-{
+{	
 	field_[x][y].state = OPENED;
+	anotherFlag = 1;
+	X = x;
+	Y = y;
 }

@@ -13,6 +13,7 @@ class Game
 	    void welcomeScreen();
 	    void markFlag(int x, int y);
 	    void open(int x, int y);
+	    bool gridSweeper(int x, int y);
 	
 	private:
 	    

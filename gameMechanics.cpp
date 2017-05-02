@@ -31,8 +31,8 @@ Game::Game()
             field_[x][y].state = CLOSED;
             field_[x][y].hasMine = false;
         }
-    //for (int i = 0; i < 30; ++i)
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 10; ++i)
+    //for (int i = 0; i < 5; ++i)
     {
         int x, y;
         //Randomly select a position x and y till a field with no mines has returned to place a mine there
@@ -81,7 +81,7 @@ bool Game::gameWin()
 				count++;
 		}
 	}
-	if(count == 5)
+	if(count == 10)
 		return true;
 	else
 		return false;

@@ -12,6 +12,9 @@ Drawer d;
 int retFlag = 0, anotherFlag = 0;
 int X, Y;
 
+///////////////////////////////
+int flagCount = 0;
+///////////////////////////////
 
 void boom()
 {
@@ -27,7 +30,8 @@ Game::Game()
             field_[x][y].state = CLOSED;
             field_[x][y].hasMine = false;
         }
-    for (int i = 0; i < 30; ++i)
+    //for (int i = 0; i < 30; ++i)
+    for (int i = 0; i < 5; ++i)
     {
         int x, y;
         //Randomly select a position x and y till a field with no mines has returned to place a mine there
@@ -65,9 +69,38 @@ bool Game::gridSweeper(int x, int y)
     else return false;
 }
 
+bool Game::gameWin()
+{
+	int count = 0;
+	for(int x = 0; x < WIDTH; x++)
+	{
+		for(int y = 0; y < HEIGHT; y++)
+		{
+			if(field_[x][y].hasMine && (field_[x][y].state == FLAG))
+				count++;
+		}
+	}
+	if(count == 5)
+		return true;
+	else
+		return false;
+}
 
 void Game::draw()
 {	int boomFlag = 0;
+
+	///////////////////////////////////////////////////////
+	//Add the condition to check the winning condition here
+	//if(flagCount == 5)
+	//{
+	if(gameWin())
+	{
+		d.gameWon((int)HEIGHT, (int)WIDTH);
+		gameWonFlag = true;
+		gameOver = true;
+	}
+	//}
+	///////////////////////////////////////////////////////
 
 	if(!gameOver)
 	{	for (int y = 0; y < HEIGHT; ++y)
@@ -96,8 +129,8 @@ void Game::draw()
 
 		                	if(anotherFlag)
 							{	
-								int depth = rand()%5;
-
+								//int depth = rand()%5;
+								int depth = 2;
 								for(int k = 1; k <= depth;k++){
 		                			if(X > 0 && !gridSweeper(X-k, Y)) break;
 		                			if(Y > 0 && !gridSweeper(X, Y-k)) break;
@@ -158,7 +191,14 @@ void Game::draw()
 			    	d.drawClosedField(i, j);
 			    }
 		sleep(1);
-		d.gameOver((int)HEIGHT, (int)WIDTH);
+		if(!gameWonFlag)
+		{
+			d.gameOver((int)HEIGHT, (int)WIDTH);
+		}
+		else
+		{
+			d.gameWon((int)HEIGHT, (int)WIDTH);
+		}
 	}
 }
 
@@ -170,9 +210,11 @@ void Game::markFlag(int x, int y)
 	        break;
 	    case CLOSED:
 	        field_[x][y].state = FLAG;
+	        flagCount++;
 	        break;
 	    case FLAG:
 	        field_[x][y].state = CLOSED;
+	        flagCount--;
 	        break;
     }
 }
@@ -180,7 +222,7 @@ void Game::markFlag(int x, int y)
 void Game::open(int x, int y)
 {	
 	//This is the place where we make sure that clicking the flagged cell
-	//doesnt lead to opening it. 
+	//doesnt lead to opening it and when the cell is already opened. 
 	if(!((field_[x][y].state == FLAG)||(field_[x][y].state == OPENED)))
 	{
 		field_[x][y].state = OPENED;

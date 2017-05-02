@@ -7,6 +7,7 @@ class Game
 	    enum { WIDTH = 30, HEIGHT = 20 };
 	    enum State { CLOSED, OPENED, FLAG }; // 3 possible states of any given field
 	    bool gameOver;
+	    bool gameWonFlag;
 
 	    Game();
 	    void draw();
@@ -14,6 +15,7 @@ class Game
 	    void markFlag(int x, int y);
 	    void open(int x, int y);
 	    bool gridSweeper(int x, int y);
+	    bool gameWin();
 	
 	private:
 	    

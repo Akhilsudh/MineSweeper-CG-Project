@@ -10,6 +10,9 @@ class Drawer
 	    void drawOpenedField(int x, int y, int neighbourMinesCount);
 	    void renderBox(int h, int y, int scale);
 	    void gameOver(int h, int y);
+
+	    void gameWon(int h, int w);
+
 	    void drawWelcomeScreen(int h, int w);
 	private:
     	void drawOpenedField(int x, int y); //For Blank Fields

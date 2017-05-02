@@ -181,7 +181,7 @@ void Game::open(int x, int y)
 {	
 	//This is the place where we make sure that clicking the flagged cell
 	//doesnt lead to opening it. 
-	if(!(field_[x][y].state == FLAG))
+	if(!((field_[x][y].state == FLAG)||(field_[x][y].state == OPENED)))
 	{
 		field_[x][y].state = OPENED;
 		anotherFlag = 1;

@@ -45,7 +45,7 @@ Game::Game()
 
 bool Game::gridSweeper(int x, int y)
 {
-	if (!field_[x][y].hasMine)
+	if (!(field_[x][y].hasMine || (field_[x][y].state == FLAG) ))
 	{	
 		int neighbourMinesCount = 0;
 	    //Check all around this field for mines and increase the neighbouring mines count
@@ -179,6 +179,8 @@ void Game::markFlag(int x, int y)
 
 void Game::open(int x, int y)
 {	
+	//This is the place where we make sure that clicking the flagged cell
+	//doesnt lead to opening it. 
 	if(!(field_[x][y].state == FLAG))
 	{
 		field_[x][y].state = OPENED;

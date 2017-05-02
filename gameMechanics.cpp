@@ -179,8 +179,11 @@ void Game::markFlag(int x, int y)
 
 void Game::open(int x, int y)
 {	
-	field_[x][y].state = OPENED;
-	anotherFlag = 1;
-	X = x;
-	Y = y;
+	if(!(field_[x][y].state == FLAG))
+	{
+		field_[x][y].state = OPENED;
+		anotherFlag = 1;
+		X = x;
+		Y = y;
+	}
 }

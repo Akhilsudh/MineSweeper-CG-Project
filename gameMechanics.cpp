@@ -12,13 +12,14 @@ Drawer d;
 int retFlag = 0, anotherFlag = 0;
 int X, Y;
 
-///////////////////////////////
-int flagCount = 0;
-///////////////////////////////
-
 void boom()
 {
     system("play boom.wav 2> /dev/null");
+}
+
+void win()
+{
+	system("play boom.wav 2> /dev/null");	
 }
 
 Game::Game()
@@ -88,19 +89,12 @@ bool Game::gameWin()
 
 void Game::draw()
 {	int boomFlag = 0;
-
-	///////////////////////////////////////////////////////
-	//Add the condition to check the winning condition here
-	//if(flagCount == 5)
-	//{
 	if(gameWin())
 	{
-		d.gameWon((int)HEIGHT, (int)WIDTH);
+		//d.gameWon((int)HEIGHT, (int)WIDTH);
 		gameWonFlag = true;
 		gameOver = true;
 	}
-	//}
-	///////////////////////////////////////////////////////
 
 	if(!gameOver)
 	{	for (int y = 0; y < HEIGHT; ++y)
@@ -157,7 +151,7 @@ void Game::draw()
 
 		                	for (int j = 0; j < HEIGHT; ++j)
 	        					for (int i = 0; i < WIDTH; ++i)
-	        						if (field_[i][j].hasMine){
+	        						if (field_[i][j].hasMine ){
 	        							field_[i][j].state = OPENED;
 	        							d.drawMine(i, j);	                	
 	        						}
@@ -181,15 +175,21 @@ void Game::draw()
 	else{
 		for (int j = 0; j < HEIGHT; ++j)
 			for (int i = 0; i < WIDTH; ++i)
-				if (field_[i][j].hasMine)
+			{	
+				if (field_[i][j].hasMine && !gameWonFlag)
 				{
 			    	field_[i][j].state = OPENED;
 			    	d.drawMine(i, j);	                	
+			    }
+			    else if (field_[i][j].hasMine && gameWonFlag)
+			    {
+			    	d.drawFlag(i, j);	
 			    }
 			    else
 			    {
 			    	d.drawClosedField(i, j);
 			    }
+			}    
 		sleep(1);
 		if(!gameWonFlag)
 		{
@@ -210,11 +210,9 @@ void Game::markFlag(int x, int y)
 	        break;
 	    case CLOSED:
 	        field_[x][y].state = FLAG;
-	        flagCount++;
 	        break;
 	    case FLAG:
 	        field_[x][y].state = CLOSED;
-	        flagCount--;
 	        break;
     }
 }

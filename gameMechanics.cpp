@@ -11,7 +11,7 @@ int initial = 0;
 Drawer d;
 int retFlag = 0, anotherFlag = 0;
 int X, Y;
-
+int winFlag = 0;
 void boom()
 {
     system("play boom.wav 2> /dev/null");
@@ -91,8 +91,11 @@ void Game::draw()
 {	int boomFlag = 0;
 	if(gameWin())
 	{
-		std::thread t1(win);
-		t1.join();
+		if(!winFlag){
+			std::thread t1(win);
+			t1.join();
+			winFlag = 1;
+		}	
 		gameWonFlag = true;
 		gameOver = true;
 	}

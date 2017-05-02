@@ -19,7 +19,7 @@ void boom()
 
 void win()
 {
-	system("play boom.wav 2> /dev/null");	
+	system("play ToToDo.wav 2> /dev/null");	
 }
 
 Game::Game()
@@ -91,7 +91,8 @@ void Game::draw()
 {	int boomFlag = 0;
 	if(gameWin())
 	{
-		//d.gameWon((int)HEIGHT, (int)WIDTH);
+		std::thread t1(win);
+		t1.join();
 		gameWonFlag = true;
 		gameOver = true;
 	}

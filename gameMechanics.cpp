@@ -31,7 +31,7 @@ Game::Game()
             field_[x][y].state = CLOSED;
             field_[x][y].hasMine = false;
         }
-    for (int i = 0; i < 10; ++i)
+    for (int i = 0; i < 30; ++i)
     //for (int i = 0; i < 5; ++i)
     {
         int x, y;

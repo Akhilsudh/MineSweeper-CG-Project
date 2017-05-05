@@ -14,7 +14,11 @@ The game will be played as follows:
    2. Right Mouse button to place a flag on the square or remove an existing flag.
    3. On left clicking a field that has a mine, the game is “GAME OVER”
 
-
+## Screenshots
+![Welcome](http://i.imgur.com/yytZauD.png)
+![GamePlay](http://i.imgur.com/HZLEAg2.png)
+![GameWon](http://imgur.com/G3cH09R.png)
+![GameOver](http://imgur.com/nkVDa2r.png)
 ### Installing Prerequisites (OpenGL in Linux)
 #### On debian based systems
 You can install the required dependencies using the following commands

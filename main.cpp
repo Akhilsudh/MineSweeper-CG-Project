@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(Game::WIDTH * Drawer::CELL_WIDTH, Game::HEIGHT * Drawer::CELL_HEIGHT);
     glutInitWindowPosition(100, 120);
-    glutCreateWindow("MineSweeper-CG-Project");
+    glutCreateWindow("Wrap-Around MineSweeper");
     glClearColor(0, 0, 0, 1);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

@@ -1,4 +1,4 @@
-# MineSweeper Game 
+# Wrap-Around MineSweeper
 ## Computer Graphics and Visualization Laboratory Project 10CSL67 (2016-2017 batch)
    This project demonstrates a simple game of Mine-Sweeper. Minesweeper is a single-player puzzle
 video game. The objective of the game is to clear a square board containing hidden "mines" without

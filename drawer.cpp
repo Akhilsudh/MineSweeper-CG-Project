@@ -12,11 +12,11 @@ void Drawer::drawWelcomeScreen(int h, int w) //Draws Welcome Screen
     glColor3f(0,0,0);
     glLineWidth(5.0);
     glColor3f(1.0f, 0.0f, 0.0f);
-    drawStrokeText("MineSweeper", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 65, 0, 0.5, 0.35f);
+    drawStrokeText("Minesweeper", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 115, 0, 0.5, 0.35f);
     glColor3f(0.0f, 0.0f, 0.0f);
-    drawStrokeText("By", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 105, 0, 1.0, 0.25f);
-    drawStrokeText("Akhil S", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 145, 0, 0.8, 0.25f);
-    drawStrokeText("Abhijith C", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 185, 0, 0.8, 0.25f);
+    drawStrokeText("By", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 165, 0, 1.0, 0.25f);
+    drawStrokeText("Akhil S", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 205, 0, 0.8, 0.25f);
+    drawStrokeText("Abhijith C", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 245, 0, 0.8, 0.25f);
     glLineWidth(1.0);
     glutSwapBuffers(); 
 }
@@ -167,26 +167,26 @@ void Drawer::renderBox(int h, int w, int scale)
     //Create a Closed Grey Box 
     glColor3f(0.8f, 0.8f, 0.8f);
     glBegin(GL_QUADS);
-    glVertex2f((w/scale)*CELL_WIDTH, (h/scale)*CELL_HEIGHT);
-    glVertex2f((2*w/scale)*CELL_WIDTH, (h/scale)*CELL_HEIGHT);
-    glVertex2f((2*w/scale)*CELL_WIDTH, (2*h/scale)*CELL_HEIGHT);
-    glVertex2f((w/scale)*CELL_WIDTH, (2*h/scale)*CELL_HEIGHT);
+    glVertex2f((0.5*w/scale)*CELL_WIDTH, (0.5*h/scale)*CELL_HEIGHT);
+    glVertex2f((2.5*w/scale)*CELL_WIDTH, (0.5*h/scale)*CELL_HEIGHT);
+    glVertex2f((2.5*w/scale)*CELL_WIDTH, (2.5*h/scale)*CELL_HEIGHT);
+    glVertex2f((0.5*w/scale)*CELL_WIDTH, (2.5*h/scale)*CELL_HEIGHT);
     glEnd();
     //Lines for tile effect
     glColor3f(1.0f, 1.0f, 1.0f);
     glBegin(GL_LINES);
-    glVertex2f((w/scale)*CELL_WIDTH, (h/scale)*CELL_HEIGHT);
-    glVertex2f((2*w/scale)*CELL_WIDTH - 1, (h/scale)*CELL_HEIGHT);
-    glVertex2f((w/scale)*CELL_WIDTH, (h/scale)*CELL_HEIGHT);
-    glVertex2f((w/scale)*CELL_WIDTH, (2*h/scale)*CELL_HEIGHT - 1);
+    glVertex2f((0.5*w/scale)*CELL_WIDTH, (0.5*h/scale)*CELL_HEIGHT);
+    glVertex2f((2.5*w/scale)*CELL_WIDTH - 2, (0.5*h/scale)*CELL_HEIGHT);
+    glVertex2f((0.5*w/scale)*CELL_WIDTH, (0.5*h/scale)*CELL_HEIGHT);
+    glVertex2f((0.5*w/scale)*CELL_WIDTH, (2.5*h/scale)*CELL_HEIGHT - 2);
     glEnd();
     //Dark grey Lines for depth
     glColor3f(0.2f, 0.2f, 0.2f);
     glBegin(GL_LINES);
-    glVertex2f((2*w/scale)*CELL_WIDTH - 1, (h/scale)*CELL_HEIGHT);
-    glVertex2f((2*w/scale)*CELL_WIDTH - 1, (2*h/scale)*CELL_HEIGHT - 1);
-    glVertex2f((w/scale)*CELL_WIDTH, (2*h/scale)*CELL_HEIGHT - 1);
-    glVertex2f((2*w/scale)*CELL_WIDTH - 1, (2*h/scale)*CELL_HEIGHT - 1);
+    glVertex2f((2.5*w/scale)*CELL_WIDTH - 2, (0.5*h/scale)*CELL_HEIGHT);
+    glVertex2f((2.5*w/scale)*CELL_WIDTH - 2, (2.5*h/scale)*CELL_HEIGHT - 2);
+    glVertex2f((0.5*w/scale)*CELL_WIDTH, (2.5*h/scale)*CELL_HEIGHT - 2);
+    glVertex2f((2.5*w/scale)*CELL_WIDTH - 2, (2.5*h/scale)*CELL_HEIGHT - 2);
     glEnd();
     
 }

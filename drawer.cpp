@@ -12,6 +12,7 @@ void Drawer::drawWelcomeScreen(int h, int w) //Draws Welcome Screen
     glColor3f(0,0,0);
     glLineWidth(5.0);
     glColor3f(1.0f, 0.0f, 0.0f);
+    drawStrokeText("Wrap-Around", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 65, 0, 0.5, 0.35f);
     drawStrokeText("Minesweeper", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 115, 0, 0.5, 0.35f);
     glColor3f(0.0f, 0.0f, 0.0f);
     drawStrokeText("By", (w/3)*CELL_WIDTH + 15, (h/3)*CELL_HEIGHT + 165, 0, 1.0, 0.25f);

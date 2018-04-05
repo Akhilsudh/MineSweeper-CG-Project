@@ -1,6 +1,7 @@
 # Wrap-Around MineSweeper
-## Computer Graphics and Visualization Laboratory Project 10CSL67 (2016-2017 batch)
-   This project demonstrates a simple game of Mine-Sweeper. Minesweeper is a single-player puzzle
+[![Library](https://img.shields.io/badge/Library-OpenGL-orange.svg)](https://www.opengl.org/)
+[![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](https://github.com/Akhilsudh/MineSweeper-CG-Project/blob/master/LICENSE)   
+> This project demonstrates a simple game of Mine-Sweeper. Minesweeper is a single-player puzzle
 video game. The objective of the game is to clear a square board containing hidden "mines" without
 detonating any of them, with help from clues about the number of neighboring mines in each field.
 The game is played by revealing squares of the grid by clicking each square. If a square containing a
@@ -9,16 +10,11 @@ indicating how many adjacent squares contain mines; if no mines are adjacent, th
 player uses this information to deduce the contents of other squares, and may either safely reveal each square
 or mark the square as containing a mine by placing a flag.
 
-The game will be played as follows:
-   1. Left Mouse button to select a box/field and reveal its contents.
-   2. Right Mouse button to place a flag on the square or remove an existing flag.
-   3. On left clicking a field that has a mine, the game is “GAME OVER”
-
-## Screenshots
-![Welcome](http://i.imgur.com/yytZauD.png)
-![GamePlay](http://i.imgur.com/HZLEAg2.png)
-![GameWon](http://imgur.com/G3cH09R.png)
-![GameOver](http://imgur.com/nkVDa2r.png)
+> The game will be played as follows:
+>   1. Left Mouse button to select a box/field and reveal its contents.
+>   2. Right Mouse button to place a flag on the square or remove an existing flag.
+>   3. On left clicking a field that has a mine, the game is “GAME OVER”
+   
 ### Installing Prerequisites (OpenGL in Linux)
 #### On debian based systems
 You can install the required dependencies using the following commands
@@ -56,3 +52,9 @@ Execute the following commands to compile the project
  
 ### Running the game/project(Without the script)
     ./minesweeperExecutable
+
+## Screenshots
+![Welcome](http://i.imgur.com/yytZauD.png)
+![GamePlay](http://i.imgur.com/HZLEAg2.png)
+![GameWon](http://imgur.com/G3cH09R.png)
+![GameOver](http://imgur.com/nkVDa2r.png)
